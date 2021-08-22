@@ -1,1 +1,3 @@
-apikey: ${API_KEY}
+external:
+  apikey: ${API_KEY}
+  notion_db: ${NOTION_DB_ID}

@@ -21,7 +21,7 @@ class MainControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
-    @Value("${apikey}")
+    @Value("${external.apikey}")
     private String apikey;
 
     @DisplayName("1. notion 테이블에서 게시글 아이디값으로 내부 block 요소 가져오기")
@@ -33,6 +33,12 @@ class MainControllerTest {
                         .header("Authorization", apikey))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE));
+
+    }
+
+    @DisplayName("2. 노션에서 블로그용으로 작성된 모든 게시글 가져오기")
+    @Test
+    void test_2() {
 
     }
 
