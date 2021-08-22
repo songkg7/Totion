@@ -1,5 +1,7 @@
 package com.lambda.totion.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -15,6 +17,9 @@ public class Result {
 
     private String object;  // page
     private String id;
+
+    @JsonInclude(Include.NON_NULL)
+    private String type;
 
     private boolean archived;
 

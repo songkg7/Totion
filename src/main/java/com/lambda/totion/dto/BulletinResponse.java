@@ -5,9 +5,9 @@ import java.util.List;
 import lombok.Data;
 
 @Data
-public class ResponseDto {
+public class BulletinResponse {
 
-    private String object;  // list
+    private String object;
     private List<Result> results = new ArrayList<>();
 
 }
