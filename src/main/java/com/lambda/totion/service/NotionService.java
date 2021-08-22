@@ -4,6 +4,7 @@ import com.lambda.totion.dto.RequestDto;
 import com.lambda.totion.dto.ResponseDto;
 import java.net.URI;
 import java.util.List;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.http.RequestEntity;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+@Slf4j
 @Service
 public class NotionService {
 
@@ -25,6 +27,7 @@ public class NotionService {
     private final String NOTION_VERSION = "2021-08-16";
 
     public ResponseDto getTableFilterBy(String status) {
+        log.info(status);
         URI uri = UriComponentsBuilder.fromUriString(NOTION_API_URL)
                 .path("v1/databases/" + notionDbID + "/query")
                 .encode()

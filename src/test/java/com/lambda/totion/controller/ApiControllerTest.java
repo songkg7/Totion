@@ -11,7 +11,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 @WebMvcTest
 @ExtendWith(MockitoExtension.class)
-class MainControllerTest {
+class ApiControllerTest {
 
     @Autowired
     private MockMvc mockMvc;

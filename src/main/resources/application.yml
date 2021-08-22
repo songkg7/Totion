@@ -1,3 +1,5 @@
 external:
   apikey: ${API_KEY}
   notion_db: ${NOTION_DB_ID}
+  tistory_app_id: ${TISTORY_APP_ID}
+  tistory_secret_key: ${TISTORY_SECRET_KEY}
