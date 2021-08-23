@@ -1,7 +1,8 @@
 package com.lambda.totion.service;
 
-import com.lambda.totion.dto.RequestDto;
-import com.lambda.totion.dto.ResponseDto;
+import com.lambda.totion.dto.notion.RequestDto;
+import com.lambda.totion.dto.notion.ResponseDto;
+import com.lambda.totion.dto.notion.ResponsePage;
 import java.net.URI;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
@@ -60,7 +61,7 @@ public class NotionService {
         return result.getBody();
     }
 
-    public ResponseDto getBulletinById(String bulletinId) {
+    public ResponsePage getBulletinById(String bulletinId) {
         URI uri = UriComponentsBuilder.fromUriString(NOTION_API_URL)
                 .path("/v1/blocks/" + bulletinId + "/children")
                 .encode()
@@ -74,8 +75,8 @@ public class NotionService {
 
         RestTemplate restTemplate = new RestTemplate();
 
-        ResponseEntity<ResponseDto> result = restTemplate.exchange(requestEntity,
-                ResponseDto.class);
+        ResponseEntity<ResponsePage> result = restTemplate.exchange(requestEntity,
+                ResponsePage.class);
 
         return result.getBody();
     }

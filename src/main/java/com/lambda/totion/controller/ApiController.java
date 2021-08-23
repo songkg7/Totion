@@ -1,8 +1,9 @@
 package com.lambda.totion.controller;
 
 import com.lambda.totion.dto.AccessToken;
-import com.lambda.totion.dto.ResponseDto;
-import com.lambda.totion.dto.Result;
+import com.lambda.totion.dto.notion.DBResult;
+import com.lambda.totion.dto.notion.ResponseDto;
+import com.lambda.totion.dto.notion.ResponsePage;
 import com.lambda.totion.service.NotionService;
 import com.lambda.totion.service.TistoryService;
 import java.util.List;
@@ -43,21 +44,25 @@ public class ApiController {
 
     // Notion 에 작성된 글 ID 가져오기
     @GetMapping("/table/{status}")
-    public List<String> status(@PathVariable String status) {
+    public ResponsePage status(@PathVariable String status) {
         log.info("MainController.status");
         ResponseDto response = notionService.getTableFilterBy(status);
 
         // response 에서 id 만 가져오기
-        List<String> collect = response.getResults().stream().map(Result::getId)
+        List<String> collect = response.getResults().stream().map(DBResult::getId)
                 .collect(Collectors.toList());
 
-        return collect;
+        log.info("업로드 준비된 글 = {}", collect.size());
+
+//        collect.forEach(System.out::println);
+
+        return notionService.getBulletinById(collect.get(0));
 
     }
 
     // notion 글 id 로 내용 가져오기
     @GetMapping("/bulletin/{bulletinId}")
-    public ResponseDto getBulletin(@PathVariable String bulletinId) {
+    public ResponsePage getBulletin(@PathVariable String bulletinId) {
         return notionService.getBulletinById(bulletinId);
     }
 

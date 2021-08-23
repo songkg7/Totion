@@ -1,4 +1,4 @@
-package com.lambda.totion.dto;
+package com.lambda.totion.dto.notion;
 
 import java.util.ArrayList;
 import java.util.List;

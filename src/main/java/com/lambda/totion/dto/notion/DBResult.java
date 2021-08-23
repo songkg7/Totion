@@ -1,4 +1,4 @@
-package com.lambda.totion.dto;
+package com.lambda.totion.dto.notion;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -13,7 +13,7 @@ import java.util.Map;
 import lombok.Data;
 
 @Data
-public class Result {
+public class DBResult {
 
     private String object;  // page
     private String id;
