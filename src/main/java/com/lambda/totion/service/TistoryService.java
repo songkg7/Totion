@@ -1,6 +1,7 @@
 package com.lambda.totion.service;
 
 import com.lambda.totion.dto.AccessToken;
+import com.lambda.totion.utils.Utils;
 import java.net.URI;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -40,7 +41,7 @@ public class TistoryService {
     }
 
     public AccessToken getAccessToken(String authorizationCode) {
-        log.info("AccessToken 생성 요청");
+        log.info("accessToken 생성 요청");
         URI uri = UriComponentsBuilder.fromUriString(TISTORY_OAUTH_URI)
                 .path("/access_token")
                 .queryParam("client_id", APP_ID)
@@ -53,8 +54,10 @@ public class TistoryService {
                 .toUri();
 
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject(uri, AccessToken.class);
 
+        Utils.ACCESS_TOKEN = restTemplate.getForObject(uri, AccessToken.class);
+        log.info("accessToken 설정 완료");
+        return Utils.ACCESS_TOKEN;
     }
 
 }
